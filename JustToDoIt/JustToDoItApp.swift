@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct JustToDoItApp: App {
+    // Create a shared TodoStore instance
+    @StateObject private var todoStore = TodoStore()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(todoStore)
         }
     }
 }
