@@ -9,15 +9,17 @@ import SwiftUI
 
 @main
 struct JustToDoItApp: App {
-    // Create shared store instances
-    @StateObject private var todoStore = TodoStore()
-    @StateObject private var categoryStore = CategoryStore()
+    // Create Core Data store
+    @StateObject private var coreDataStore = CoreDataTodoStore()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(todoStore)
-                .environmentObject(categoryStore)
+                .environmentObject(coreDataStore)
+                .onAppear {
+                    // Set app appearance
+                    UINavigationBar.appearance().tintColor = .systemBlue
+                }
         }
     }
 }
